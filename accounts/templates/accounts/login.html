@@ -22,4 +22,13 @@
         </p>
     </div>
 </div>
+{% load socialaccount %}
+
+<div class="text-center my-3">
+    <span class="text-muted">أو</span>
+</div>
+
+<a href="{% provider_login_url 'google' %}" class="btn btn-outline-danger w-100 fw-bold">
+    <i class="bi bi-google me-2"></i> الدخول باستخدام Google
+</a>
 {% endblock %}
