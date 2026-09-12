@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}إنشاء حساب جديد{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 500px;">
+    <div class="card p-4 shadow-sm">
+        <h3 class="text-center mb-4 text-success fw-bold">إنشاء حساب جديد</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success w-100 fw-bold mt-3">تسجيل الحساب</button>
+        </form>
+        <p class="text-center mt-3 text-muted">
+            لديك حساب بالفعل؟ <a href="{% url 'accounts:login' %}" class="text-success">سجل دخولك هنا</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

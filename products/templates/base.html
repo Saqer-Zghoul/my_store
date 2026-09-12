@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}متجري الإلكتروني{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #121212; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; }
+        .navbar { background-color: #1e1e1e !important; border-bottom: 1px solid #333; }
+        .card { background-color: #1e1e1e; border: 1px solid #333; color: #fff; }
+        footer { margin-top: auto; background-color: #1e1e1e; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+    <!-- شريط الملاحة Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success fs-4" href="{% url 'products:product_list' %}">🛒 متجري</a>
+         <div class="d-flex align-items-center gap-3">
+    <a href="{% url 'cart:cart_detail' %}" class="btn btn-outline-light position-relative">
+        السلة
+        {% if cart|length > 0 %}
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+            {{ cart|length }}
+        </span>
+        {% endif %}
+    </a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'accounts:profile' %}" class="btn btn-outline-info">مرحباً، {{ user.username }}</a>
+        <form action="{% url 'accounts:logout' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger">خروج</button>
+        </form>
+    {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-outline-light">دخول</a>
+        <a href="{% url 'accounts:register' %}" class="btn btn-success">تسجيل</a>
+    {% endif %}
+</div>
+        </div>
+    </nav>
+<!-- رسائل التنبيه Flash Messages -->
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+ 
+    <main class="py-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- الهامش السفلي Footer -->
+    <footer class="text-center py-3 text-muted">
+        <small>جميع الحقوق محفوظة &copy; 2026 - متجري الإلكتروني</small>
+    </footer>
+
+</body>
+</html>
