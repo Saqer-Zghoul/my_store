@@ -104,10 +104,10 @@ import dj_database_url
 ALLOWED_HOSTS = ['web-production-b1556.up.railway.app', 'localhost', '127.0.0.1', '*']  # أو النطاق الذي تمنحه لك Railway
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600
+    )
 }
 
 
