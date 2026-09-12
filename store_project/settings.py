@@ -79,6 +79,9 @@ WSGI_APPLICATION = 'store_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+import os
+import dj_database_url
+ALLOWED_HOSTS = ['web-production-b1556.up.railway.app', 'localhost', '127.0.0.1', '*']  # أو النطاق الذي تمنحه لك Railway
 
 DATABASES = {
     'default': {
@@ -136,3 +139,4 @@ CART_SESSION_ID = 'cart'
 LOGIN_REDIRECT_URL = 'products:product_list'
 LOGOUT_REDIRECT_URL = 'products:product_list'
 LOGIN_URL = 'accounts:login'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
