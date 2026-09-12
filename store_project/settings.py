@@ -164,3 +164,4 @@ CSRF_TRUSTED_ORIGINS = [
     'https://web-production-b1556.up.railway.app',
     'https://*.railway.app',
 ]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
