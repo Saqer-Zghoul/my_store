@@ -165,3 +165,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# إعدادات Allauth لضمان استخدام HTTPS في الروابط
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
