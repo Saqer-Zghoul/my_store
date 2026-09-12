@@ -140,3 +140,7 @@ LOGIN_REDIRECT_URL = 'products:product_list'
 LOGOUT_REDIRECT_URL = 'products:product_list'
 LOGIN_URL = 'accounts:login'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-b1556.up.railway.app',
+    'https://*.railway.app',
+]
