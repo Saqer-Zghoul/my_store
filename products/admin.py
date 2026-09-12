@@ -3,12 +3,9 @@ from .models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['name']
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'created', 'updated']
-    list_filter = ['created', 'updated']
-    list_editable = ['price']
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ['name', 'price']
+    # قم بإلغاء أو تعديل prepopulated_fields و list_filter إذا لم تكن هذه الحقول (slug/updated) موجودة في models.py
